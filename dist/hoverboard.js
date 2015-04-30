@@ -14,7 +14,7 @@ module.exports = function(url, options){
     return d3.geo.transform({
       point: function(y, x) {
         var point = layer._map.latLngToLayerPoint(new L.LatLng(x, y));
-        this.stream.point(point.x-tileOffset.x, point.y-tileOffset.y);
+        this.stream.point(point.x-offset.x, point.y-offset.y);
       }
     });
   };
@@ -23,7 +23,7 @@ module.exports = function(url, options){
   modes.geojson = {
     extensions: ['geojson', 'json'],
     get: function(url, callback){
-      var xhr = d3.json(url, callback);
+      var xhr = d3.xhr(url).responseType('json').get(callback); //d3.json(url, callback);
       return xhr.abort.bind(xhr);
     },
     parse: function(data, canvas){
@@ -33,7 +33,7 @@ module.exports = function(url, options){
       };
 
       return {
-        data: {layer: data},
+        data: data,
         projection: projections.WGS84(tileOffset)
       }
     }
@@ -41,7 +41,7 @@ module.exports = function(url, options){
   modes.topojson = {
     extensions: ['topojson'],
     get: function(url, callback){
-      var xhr = d3.json(url, callback);
+      var xhr = d3.xhr(url).responseType('json').get(callback); //d3.json(url, callback);
       return xhr.abort.bind(xhr);
     },
     parse: function(data, canvas){
@@ -54,7 +54,7 @@ module.exports = function(url, options){
       for (var key in data.objects) {
         layers[key] = topojson.feature(data, data.objects[key]);
       }
-
+      console.log(layers)
       return {
         data: layers,
         projection: projections.WGS84(tileOffset)
