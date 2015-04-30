@@ -4,96 +4,105 @@ var map = L.map('map', {
   zoomControl: false
 });
 
-//L.tileLayer('http://{s}.tile.stamen.com/terrain-background/{z}/{x}/{y}.jpg').addTo(map);
-
-//var url = 'http://{s}.tile.openstreetmap.us/vectiles-highroad/{z}/{x}/{y}.topojson';
-var url = 'https://{s}.tiles.mapbox.com/v4/mapbox.mapbox-streets-v5,mapbox.mapbox-terrain-v2/{z}/{x}/{y}.vector.pbf?access_token=pk.eyJ1IjoiZmFyYWRheTIiLCJhIjoiTUVHbDl5OCJ9.buFaqIdaIM3iXr1BOYKpsQ';
+var url = 'https://vector.mapzen.com/osm/all/{z}/{x}/{y}.mapbox';
+// var url = 'https://vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson';
+// var url = 'https://vector.mapzen.com/osm/all/{z}/{x}/{y}.json';
 
 var colors = {
-  land: '#FCFBE7',
-  water: '#368ed9',
+  base: '#f7ecdc',
+  land: '#f7ecdc',
+  water: '#357abf',
   grass: '#E6F2C1',
   beach: '#FFEEC7',
-  park: '#DAF2C1',
+  park: '#a5af6e',
   cemetery: '#D6DED2',
   wooded: '#C3D9AD',
   agriculture: '#F2E8B6',
-  building: '#E4E0E0',
+  building: '#b3bdc4',
   hospital: 'rgb(229,198,195)',
   school: '#FFF5CC',
   sports: '#B8E6B8',
-  residential: '#FCFBE7',
-  commercial: '#FCFBE7',
-  industrial: '#FCFBE7',
+  residential: '#f7ecdc',
+  commercial: '#f7ecdc',
+  industrial: '#f7ecdc',
   parking: '#EEE',
-  big_road: '#853A6C',
-  little_road: '#853A6C'
+  big_road: '#673919',
+  little_road: '#b29176',
+  railway: '#ef7369'
 };
 
-(new Hoverboard.mvt(url, {hidpiPolyfill: true}))
+L.tileLayer.hoverboard(url, {hidpiPolyfill: true})
 
   .render('landuse')
     .minZoom(12)
-    .fillBy('class', {
+    .fillBy('kind', {
+      allotments: colors.base,
+      apron: colors.base,
       cemetery: colors.cemetery,
+      cinema: colors.base,
       college: colors.school,
       commercial: colors.industrial,
-      common: colors.park,
-      forest: colors.wooded,
+      common: colors.residential,
+      farm: colors.park,
+      farmland: colors.park,
+      farmyard: colors.park,
+      footway: colors.little_road,
+      forest: colors.park,
+      fuel: colors.base,
+      garden: colors.park,
+      glacier: colors.water,
       golf_course: colors.sports,
-      grass: colors.grass,
+      grass: colors.park,
       hospital: colors.hospital,
       industrial: colors.industrial,
+      land: colors.land,
+      library: colors.school,
+      meadow: colors.park,
+      nature_reserve: colors.park,
       park: colors.park,
       parking: colors.parking,
-      pedestrian: colors.pedestrian_fill,
-      pitch: colors.sports,
+      pedestrian: colors.little_road,
+      pitch: colors.base,
+      place_of_worship: colors.base,
+      playground: colors.sports,
+      quarry: colors.industrial,
+      railway: colors.railway,
+      recreation_ground: colors.park,
       residential: colors.residential,
+      retail: colors.industrial,
+      runway: colors.base,
       school: colors.school,
-      sports_center: colors.sports,
+      scrub: colors.park,
+      sports_centre: colors.sports,
       stadium: colors.sports,
+      taxiway: colors.little_road,
+      theatre: colors.industrial,
       university: colors.school,
-      wood: colors.wooded
+      village_green: colors.park,
+      wetland: colors.water,
+      wood: colors.wooded,
+      urban_area: colors.residential,
+      park: colors.park,
+      protected: colors.park,
+      protected_area: colors.park
     })
 
-  .render('hillshade')
-    .fillBy('level', {
-      // Hillshade is now defined by numeric shade level in v2
-      94: '#f2f3f3',
-      90: '#cdcdd1',
-      89: '#a8a8b1',
-      78: '#868592',
-      67: '#646373',
-      56: '#444456'
-    })
-
-  .render('contour')
-    .stroke(0.6, 'rgba(20,20,35,0.3')
-    // Try out hypsometric nonsense here:
-    /*.fillBy('ele', {
-      10: '#000',
-      20: '#111'
-      etc . . .
-    })*/
-
-  .render('road')
-    .where('type', ['motorway', 'trunk'])
-    .stroke(1.75, 'rgba(2555, 255, 255, 0.5)')
+  .render('roads')
+    .where('kind', ['major_road', 'highway', 'rail'])
+    .stroke(1.75, 'rgba(255, 255, 255, 0.5)')
     .stroke(0.75, colors.big_road)
 
-  .render('road')
-    .whereNot('type', ['motorway', 'trunk'])
+  .render('roads')
+    .where('kind', ['minor_road', 'path'])
     .stroke(1, 'rgba(255, 255, 255, 0.5)')
     .stroke(0.5, colors.little_road)
 
-  .render('building')
+  .render('buildings')
     .fill('#888896')
     .stroke(0.5, 'rgba(0,0,0,0.4)')
 
   .render('water')
     .fill(colors.water)
-
-  .render('waterway')
     .stroke(1, colors.water)
 
   .addTo(map);
