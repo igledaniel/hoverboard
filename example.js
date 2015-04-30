@@ -4,9 +4,7 @@ var map = L.map('map', {
   zoomControl: false
 });
 
-var url = 'https://vector.mapzen.com/osm/all/{z}/{x}/{y}.mapbox';
-// var url = 'https://vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson';
-// var url = 'https://vector.mapzen.com/osm/all/{z}/{x}/{y}.json';
+var url  = window.xyz_tile_source_url;
 
 var colors = {
   base: '#f7ecdc',
