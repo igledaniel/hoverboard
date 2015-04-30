@@ -23,7 +23,7 @@ module.exports = function(url, options){
   modes.geojson = {
     extensions: ['geojson', 'json'],
     get: function(url, callback){
-      var xhr = d3.xhr(url).responseType('json').get(callback); //d3.json(url, callback);
+      var xhr = d3.xhr(url).responseType('json').get(callback);
       return xhr.abort.bind(xhr);
     },
     parse: function(data, canvas){
@@ -41,7 +41,7 @@ module.exports = function(url, options){
   modes.topojson = {
     extensions: ['topojson'],
     get: function(url, callback){
-      var xhr = d3.xhr(url).responseType('json').get(callback); //d3.json(url, callback);
+      var xhr = d3.xhr(url).responseType('json').get(callback);
       return xhr.abort.bind(xhr);
     },
     parse: function(data, canvas){
@@ -54,7 +54,7 @@ module.exports = function(url, options){
       for (var key in data.objects) {
         layers[key] = topojson.feature(data, data.objects[key]);
       }
-      console.log(layers)
+
       return {
         data: layers,
         projection: projections.WGS84(tileOffset)
