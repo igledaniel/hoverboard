@@ -1,7 +1,6 @@
 var map = L.map('map', {
-  center: [44.327,-72.888],
-  zoom: 12,
-  zoomControl: false
+  center: [40.7258,-73.9806],
+  zoom: 12
 });
 
 var url  = window.xyz_tile_source_url;
@@ -82,6 +81,7 @@ L.tileLayer.hoverboard(url, {hidpiPolyfill: true})
       wood: colors.wooded,
       urban_area: colors.residential,
       park: colors.park,
+      brownfield: colors.park,
       protected: colors.park,
       protected_area: colors.park
     })
