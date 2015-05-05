@@ -1,6 +1,6 @@
 var map = L.map('map', {
-  center: [40.7258,-73.9806],
-  zoom: 12
+  center: [40.7129,-73.9990],
+  zoom: 15
 });
 
 var url  = window.xyz_tile_source_url;
