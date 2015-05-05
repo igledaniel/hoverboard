@@ -16,11 +16,19 @@
   <script src="https://cdn.rawgit.com/mbostock/d3/master/d3.min.js"></script>
   <script src="https://cdn.rawgit.com/mbostock/topojson/master/topojson.js"></script>
   <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-hash/v0.2.1/leaflet-hash.js'></script>
+  <script src="https://cdn.rawgit.com/mapzen/ui/master/components/bug/bug.js"></script>
 
   <script src="dist/hoverboard.js"></script>
 
   <script>
     window.xyz_tile_source_url = 'https://vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson';
+
+    // initialize mapzen bug
+    var mzBug = new MapzenBug({
+        name: 'Map on Canvas using topojson',
+        link: 'https://github.com/mapzen/hoverboard',
+        twitterShareMsg: 'Wow, what cool demo by @mapzen.'
+    });
   </script>
   
   <script src="example.js"></script>
