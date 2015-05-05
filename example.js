@@ -3,6 +3,10 @@ var map = L.map('map', {
   zoom: 15
 });
 
+if (map.attributionControl) {
+  map.attributionControl.addAttribution('© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> | Tiles courtesy of <a href="https://mapzen.com/projects/vector-tiles" target="_blank">Mapzen</a>');
+}
+
 var url  = window.xyz_tile_source_url;
 
 var colors = {
