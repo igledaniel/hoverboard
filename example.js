@@ -4,7 +4,7 @@ var map = L.map('map', {
 });
 
 if (window.self !== window.top) {
-  map.scrollWheelZoom = false;
+  map.scrollWheelZoom.disable();
 }
 
 if (map.attributionControl) {
