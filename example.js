@@ -3,6 +3,10 @@ var map = L.map('map', {
   zoom: 15
 });
 
+if (window.self !== window.top) {
+  map.scrollWheelZoom = false;
+}
+
 if (map.attributionControl) {
   map.attributionControl.addAttribution('© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> | Tiles courtesy of <a href="https://mapzen.com/projects/vector-tiles" target="_blank">Mapzen</a>');
 }
