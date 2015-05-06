@@ -8,7 +8,7 @@ if (window.self !== window.top) {
 }
 
 if (map.attributionControl) {
-  map.attributionControl.addAttribution('© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> | Tiles courtesy of <a href="https://mapzen.com/projects/vector-tiles" target="_blank">Mapzen</a>');
+  map.attributionControl.addAttribution('© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> | <a href="https://mapzen.com/projects/vector-tiles" title="Tiles courtesy of Mapzen" target="_blank">Mapzen</a>');
 }
 
 var url  = window.xyz_tile_source_url;
