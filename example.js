@@ -5,6 +5,8 @@ var map = L.map('map', {
 
 if (window.self !== window.top) {
   map.scrollWheelZoom.disable();
+} else {
+  L.control.geocoder().addTo(map);
 }
 
 if (map.attributionControl) {
