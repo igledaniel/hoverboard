@@ -116,6 +116,10 @@ L.tileLayer.hoverboard(url, {hidpiPolyfill: true})
     .where('kind', ['river', 'stream', 'canal'])
     .stroke(0.5, colors.water)
 
+  .render('water')
+    .where('kind', ['riverbank'])
+    .fill(colors.water)
+
   .render('roads')
     .where('kind', ['major_road', 'highway', 'rail'])
     .stroke(1.75, 'rgba(255, 255, 255, 0.5)')
