@@ -99,11 +99,6 @@ L.tileLayer.hoverboard(url, {hidpiPolyfill: true})
     })
 
   .render('roads')
-    .where('kind', ['major_road', 'highway', 'rail'])
-    .stroke(1.75, 'rgba(255, 255, 255, 0.5)')
-    .stroke(0.75, colors.big_road)
-
-  .render('roads')
     .where('kind', ['minor_road', 'path'])
     .stroke(1, 'rgba(255, 255, 255, 0.5)')
     .stroke(0.5, colors.little_road)
@@ -120,6 +115,11 @@ L.tileLayer.hoverboard(url, {hidpiPolyfill: true})
   .render('water')
     .where('kind', ['river', 'stream', 'canal'])
     .stroke(0.5, colors.water)
+
+  .render('roads')
+    .where('kind', ['major_road', 'highway', 'rail'])
+    .stroke(1.75, 'rgba(255, 255, 255, 0.5)')
+    .stroke(0.75, colors.big_road)
 
   .addTo(map);
 
