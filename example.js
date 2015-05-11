@@ -1,6 +1,7 @@
 var map = L.map('map', {
-  center: [40.7129,-73.9990],
-  zoom: 15
+  //tokyo
+  center: [35.6841,139.7546],
+  zoom: 16
 });
 
 if (window.self !== window.top) {
