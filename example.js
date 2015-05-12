@@ -9,7 +9,7 @@ if (window.self !== window.top) {
 }
 
 if (map.attributionControl) {
-  map.attributionControl.addAttribution('© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> | <a href="https://mapzen.com/projects/vector-tiles" title="Tiles courtesy of Mapzen" target="_blank">Mapzen</a>');
+  map.attributionControl.addAttribution('<a href="https://libraries.io/bower/hoverboard/v1.0.1">Hoverboard</a> | © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> | <a href="https://mapzen.com/projects/vector-tiles" title="Tiles courtesy of Mapzen" target="_blank">Mapzen</a>');
 }
 
 var url  = window.xyz_tile_source_url;
