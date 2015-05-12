@@ -6,10 +6,6 @@ var map = L.map('map', {
 
 if (window.self !== window.top) {
   map.scrollWheelZoom.disable();
-} else {
-  L.control.geocoder({
-    layers: 'admin'
-  }).addTo(map);
 }
 
 if (map.attributionControl) {
