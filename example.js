@@ -6,6 +6,7 @@ var map = L.map('map', {
 
 if (window.self !== window.top) {
   map.scrollWheelZoom.disable();
+  document.documentElement.className += ' mapzen-demo-iframed';
 }
 
 if (map.attributionControl) {
