@@ -107,6 +107,7 @@ L.tileLayer.hoverboard(url, {hidpiPolyfill: true})
 
   .render('water')
     .where('kind', ['ocean', 'water'])
+    .whereNot('boundary', ['yes'])
     .fill(colors.water)
     .stroke(0.5, colors.water)
 
@@ -116,6 +117,7 @@ L.tileLayer.hoverboard(url, {hidpiPolyfill: true})
 
   .render('water')
     .where('kind', ['riverbank'])
+    .whereNot('boundary', ['yes'])
     .fill(colors.water)
 
   .render('roads')
