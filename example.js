@@ -6,11 +6,12 @@ var map = L.map('map', {
 
 if (window.self !== window.top) {
   map.scrollWheelZoom.disable();
+  document.documentElement.className += ' mapzen-demo-iframed';
 }
 
 if (map.attributionControl) {
   map.attributionControl.setPrefix('<a href="http://leafletjs.com" title="A JS library for interactive maps" target="_blank">Leaflet</a>')
-  map.attributionControl.addAttribution('<a href="https://libraries.io/bower/hoverboard/v1.0.1" target="_blank">Hoverboard</a> | © <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap contributors</a> | <a href="https://mapzen.com/projects/vector-tiles" title="Tiles courtesy of Mapzen" target="_blank">Mapzen</a>');
+  map.attributionControl.addAttribution('<a href="https://libraries.io/bower/hoverboard/v1.0.1" target="_top">Hoverboard</a> | © <a href="https://www.openstreetmap.org/copyright" target="_top">OpenStreetMap contributors</a> | <a href="https://mapzen.com/projects/vector-tiles" title="Tiles courtesy of Mapzen" target="_top">Mapzen</a>');
 }
 
 var url  = window.xyz_tile_source_url;

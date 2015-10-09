@@ -14,3 +14,16 @@ html, body {
   /* This prevents reference labels from being drawn twice at the same time, which is bad */
   display: none;
 }
+
+/* Hide zoom control on touch devices, which interferes with project page navigation overlay */
+.leaflet-touch .leaflet-control-zoom {
+    display: none;
+}
+
+/* For non touch devices, move control out of the way at small window widths */
+@media (max-width: 752px) {
+    /* 767px - 15px for scrollbar */
+    .mapzen-demo-iframed .leaflet-top {
+      top: 50px;
+    }
+}
